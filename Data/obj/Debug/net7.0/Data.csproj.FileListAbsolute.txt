@@ -1,0 +1,14 @@
+D:\Projects\AngularProject\Data\bin\Debug\net7.0\Data.deps.json
+D:\Projects\AngularProject\Data\bin\Debug\net7.0\Data.dll
+D:\Projects\AngularProject\Data\bin\Debug\net7.0\Data.pdb
+D:\Projects\AngularProject\Data\obj\Debug\net7.0\Data.csproj.AssemblyReference.cache
+D:\Projects\AngularProject\Data\obj\Debug\net7.0\Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\AngularProject\Data\obj\Debug\net7.0\Data.AssemblyInfoInputs.cache
+D:\Projects\AngularProject\Data\obj\Debug\net7.0\Data.AssemblyInfo.cs
+D:\Projects\AngularProject\Data\obj\Debug\net7.0\Data.csproj.CoreCompileInputs.cache
+D:\Projects\AngularProject\Data\obj\Debug\net7.0\Data.dll
+D:\Projects\AngularProject\Data\obj\Debug\net7.0\refint\Data.dll
+D:\Projects\AngularProject\Data\obj\Debug\net7.0\Data.pdb
+D:\Projects\AngularProject\Data\obj\Debug\net7.0\ref\Data.dll
+D:\Projects\AngularProject\Data\bin\Debug\net7.0\Data.runtimeconfig.json
+D:\Projects\AngularProject\Data\obj\Debug\net7.0\Data.genruntimeconfig.cache

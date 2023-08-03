@@ -1,0 +1,15 @@
+D:\Projects\AngularProject\Logic\bin\Debug\net7.0\Logic.deps.json
+D:\Projects\AngularProject\Logic\bin\Debug\net7.0\Logic.dll
+D:\Projects\AngularProject\Logic\bin\Debug\net7.0\Logic.pdb
+D:\Projects\AngularProject\Logic\bin\Debug\net7.0\Data.dll
+D:\Projects\AngularProject\Logic\bin\Debug\net7.0\Data.pdb
+D:\Projects\AngularProject\Logic\obj\Debug\net7.0\Logic.csproj.AssemblyReference.cache
+D:\Projects\AngularProject\Logic\obj\Debug\net7.0\Logic.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\AngularProject\Logic\obj\Debug\net7.0\Logic.AssemblyInfoInputs.cache
+D:\Projects\AngularProject\Logic\obj\Debug\net7.0\Logic.AssemblyInfo.cs
+D:\Projects\AngularProject\Logic\obj\Debug\net7.0\Logic.csproj.CoreCompileInputs.cache
+D:\Projects\AngularProject\Logic\obj\Debug\net7.0\Logic.csproj.CopyComplete
+D:\Projects\AngularProject\Logic\obj\Debug\net7.0\Logic.dll
+D:\Projects\AngularProject\Logic\obj\Debug\net7.0\refint\Logic.dll
+D:\Projects\AngularProject\Logic\obj\Debug\net7.0\Logic.pdb
+D:\Projects\AngularProject\Logic\obj\Debug\net7.0\ref\Logic.dll
