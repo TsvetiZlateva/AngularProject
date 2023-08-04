@@ -1,0 +1,52 @@
+﻿<h1 id="tableLabel">People contacts</h1>
+
+ <button
+   type="button"
+   title="Add New Person"
+   class="btn btn-primary my-3"
+   (click)="addUser()">
+   <i class="bi bi-plus"></i> Add New Person
+</button>
+
+<p *ngIf="!people?.length"><em>Loading...</em></p>
+
+<table class='table table-hover' aria-labelledby="tableLabel" *ngIf="people.length">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Surname</th>
+      <th>Date Of Birth</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>IBAN</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let person of people">
+      <td>{{ person.firstName }}</td>
+      <td>{{ person.surname }}</td>
+      <td>{{ person.dateOfBirth | date:'MM/dd/yyyy' }}</td>
+      <td>{{ person.address }}</td>
+      <td>{{ person.phone }}</td>
+      <td>{{ person.iban }}</td>
+      <td>
+        <button
+           class="btn btn-info btn-sm mx-1"
+           title="Edit Person"
+           type="button"
+           (click)="edutUser()">
+           <i class="bi bi-pen"></i>
+         </button>
+
+         <button
+           class="btn btn-danger btn-sm mx-1"
+           title="Delete Person"
+           type="button"
+           (click)="deleteUser()">
+           <i class="bi bi-trash"></i>
+         </button>
+         </td>
+    </tr>
+  </tbody>
+</table>
