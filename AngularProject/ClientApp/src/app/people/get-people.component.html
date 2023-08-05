@@ -1,12 +1,25 @@
 ﻿<h1 id="tableLabel">People contacts</h1>
 
- <button
-   type="button"
-   title="Add New Person"
-   class="btn btn-primary my-3"
-   (click)="addUser()">
-   <i class="bi bi-plus"></i> Add New Person
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success my-3" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addUser()">
+  <i class="bi bi-plus"></i> Add New Person
 </button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ModalTitle}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()"></button>
+      </div>
+      
+         <app-add-edit-person [person]="person" *ngIf="ActivateAddEditPersonComp">
+         </app-add-edit-person>
+     
+    </div>
+  </div>
+</div>
 
 <p *ngIf="!people?.length"><em>Loading...</em></p>
 

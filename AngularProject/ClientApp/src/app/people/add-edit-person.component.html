@@ -1,0 +1,51 @@
+<div class="modal-body">
+
+  <div class="d-flex flex-row bd-highlight mb-9">
+    <div class="p-2 w-100 bd-highlight">
+      <div *ngIf="SuccessMessage" class="alert alert-success" role="alert">
+        {{ SuccessMessage }}
+      </div>
+
+      <div *ngIf="ErrorMessage" class="alert alert-danger" role="alert">
+        {{ ErrorMessage }}
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">First Name</span>
+        <input type="text" class="form-control" [(ngModel)]="FirstName">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text">Surname</span>
+        <input type="text" class="form-control" [(ngModel)]="Surname">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text">Date Of Birth</span>
+        <input type="date" class="form-control" [(ngModel)]="DateOfBirth">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text">Address</span>
+        <input type="text" class="form-control" [(ngModel)]="Address">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text">Phone</span>
+        <input type="text" class="form-control" [(ngModel)]="Phone">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text">IBAN</span>
+        <input type="text" class="form-control" [(ngModel)]="IBAN">
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+  <button data-dismiss="modal" (click)="addPerson()" *ngIf="person.PersonId == '0'" class="btn btn-success">
+    Add
+  </button>
+
+  <button (click)="updatePerson()" *ngIf="person.PersonId !='0'" class="btn btn-info">
+    Update
+  </button>
+</div>

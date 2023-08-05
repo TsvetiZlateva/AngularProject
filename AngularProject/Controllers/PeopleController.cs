@@ -1,6 +1,7 @@
 ﻿using Data.Data;
 using Data.Models;
 using Logic.DTO;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,15 @@ namespace AngularProject.Controllers
         public IEnumerable<Person> Get()
         {
            return _db.People.ToArray();
+        }
+
+        [HttpPost]
+        public IActionResult Post(Person person)
+        {
+            _db.People.Add(person);
+            _db.SaveChanges();
+
+            return Ok();
         }
     }
 }
