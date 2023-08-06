@@ -8,7 +8,6 @@ import { Person } from './get-people.component'
 })
 
 export class AddEditPersonComponent implements OnInit {
-  @ViewChild('#exampleModal', { static: false }) myModal: any;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
 
@@ -18,7 +17,7 @@ export class AddEditPersonComponent implements OnInit {
   PersonId = "";
   FirstName = "";
   Surname = "";
-  DateOfBirth = "";
+  DateOfBirth = null;
   Address = "";
   Phone = "";
   IBAN = "";
@@ -26,7 +25,7 @@ export class AddEditPersonComponent implements OnInit {
   ErrorMessage = "";
 
   ngOnInit(): void {
-    this.PersonId = this.person.DepartmentId;
+    this.PersonId = this.person.PersonId;
     this.FirstName = this.person.FirstName;
     this.Surname = this.person.Surname;
     this.DateOfBirth = this.person.DateOfBirth;
@@ -36,29 +35,44 @@ export class AddEditPersonComponent implements OnInit {
   }
 
   addPerson() {
-    var person = {
+    let person = {
       FirstName: this.FirstName,
       Surname: this.Surname,
       DateOfBirth: this.DateOfBirth,
       Address: this.Address,
       Phone: this.Phone,
       IBAN: this.IBAN,
-
     };
+
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    return this.http.post<Person>(this.baseUrl + 'people', person, httpOptions).subscribe(result => {     
+    this.http.post<Person>(this.baseUrl + 'people', person, httpOptions).subscribe(result => {     
       this.SuccessMessage = "Success";
+      //this.refreshList();
 
       this.FirstName = "";
       this.Surname = "";
-      this.DateOfBirth = "";
+      this.DateOfBirth = null;
       this.Address = "";
       this.Phone = "";
-      this.IBAN = "";
+      this.IBAN = "";      
     }, error => this.ErrorMessage = "Error"); //console.error(error));
   }
 
   updatePerson() {
-    
+    let person = {
+      PersonId: this.PersonId,
+      FirstName: this.FirstName,
+      Surname: this.Surname,
+      DateOfBirth: this.DateOfBirth,
+      Address: this.Address,
+      Phone: this.Phone,
+      IBAN: this.IBAN,
+    };
+
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    this.http.put<Person>(this.baseUrl + 'people', person, httpOptions).subscribe(result => {
+      this.SuccessMessage = "Success";
+      //this.refreshList();
+    }, error => this.ErrorMessage = "Error"); //console.error(error));
   }
 }

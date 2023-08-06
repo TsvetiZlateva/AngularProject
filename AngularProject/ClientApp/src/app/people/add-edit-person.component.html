@@ -11,28 +11,31 @@
       </div>
 
       <div class="input-group mb-3">
+        <input type="hidden" class="form-control" [(ngModel)]="PersonId">
+      </div>
+      <div class="input-group mb-3">
         <span class="input-group-text">First Name</span>
-        <input type="text" class="form-control" [(ngModel)]="FirstName">
+        <input type="text" class="form-control" [(ngModel)]="FirstName" required>
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text">Surname</span>
-        <input type="text" class="form-control" [(ngModel)]="Surname">
+        <input type="text" class="form-control" [(ngModel)]="Surname" required>
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text">Date Of Birth</span>
-        <input type="date" class="form-control" [(ngModel)]="DateOfBirth">
+        <input type="date" class="form-control" [(ngModel)]="DateOfBirth" required>
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text">Address</span>
-        <input type="text" class="form-control" [(ngModel)]="Address">
+        <input type="text" class="form-control" [(ngModel)]="Address" required>
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text">Phone</span>
-        <input type="text" class="form-control" [(ngModel)]="Phone">
+        <input type="text" class="form-control" [(ngModel)]="Phone" required>
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text">IBAN</span>
-        <input type="text" class="form-control" [(ngModel)]="IBAN">
+        <input type="text" class="form-control" [(ngModel)]="IBAN" required>
       </div>
     </div>
   </div>

@@ -32,5 +32,39 @@ namespace AngularProject.Controllers
 
             return Ok();
         }
+
+        [HttpPut]
+        public IActionResult Put(Person person)
+        {
+            var personForUpdate = _db.People.Find(person.PersonId);
+
+            if (personForUpdate != null)
+            {
+                personForUpdate.FirstName = person.FirstName;
+                personForUpdate.Surname = person.Surname;
+                personForUpdate.DateOfBirth = person.DateOfBirth;
+                personForUpdate.Address = person.Address;
+                personForUpdate.Phone = person.Phone;
+                personForUpdate.IBAN = person.IBAN;
+
+                _db.SaveChanges();
+            }
+           
+            return Ok();
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(string personId)
+        {
+            var personForDeletion = _db.People.Find(new Guid(personId));
+
+            if (personForDeletion != null)
+            {
+                _db.Remove(personForDeletion);
+                _db.SaveChanges();
+            }                
+
+            return Ok();
+        }
     }
 }

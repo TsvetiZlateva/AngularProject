@@ -1,4 +1,4 @@
-﻿<h1 id="tableLabel">People contacts</h1>
+<h1 id="tableLabel">People contacts</h1>
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-success my-3" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addUser()">
@@ -48,7 +48,8 @@
            class="btn btn-info btn-sm mx-1"
            title="Edit Person"
            type="button"
-           (click)="edutUser()">
+           data-bs-toggle="modal" data-bs-target="#exampleModal" 
+           (click)="editUser(person)">
            <i class="bi bi-pen"></i>
          </button>
 
@@ -56,7 +57,7 @@
            class="btn btn-danger btn-sm mx-1"
            title="Delete Person"
            type="button"
-           (click)="deleteUser()">
+           (click)="deleteUser(person)">
            <i class="bi bi-trash"></i>
          </button>
          </td>

@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-get-people',
@@ -18,7 +19,7 @@ export class PeopleComponent {
     }, error => console.error(error));
   }
 
-  addUser() {   
+  addUser() {
     this.person = {
       PersonId: "0",
       //FirstName: ""
@@ -27,16 +28,35 @@ export class PeopleComponent {
     this.ActivateAddEditPersonComp = true;
   }
 
-  edutUser() {
-    //TODO
+  editUser(person: Person) {
+    this.person = {
+      PersonId: person.personId,
+      FirstName: person.firstName,
+      Surname: person.surname,
+      DateOfBirth: moment(new Date(person.dateOfBirth)).format('YYYY-MM-DD') ,
+      Address: person.address,
+      Phone: person.phone,
+      IBAN: person.iban,
+    }
+    this.ModalTitle = "Edit Person";
+    this.ActivateAddEditPersonComp = true;
   }
 
-  deleteUser() {
-    //TODO
-  }
+  deleteUser(person: any) {
+    if (confirm('Are you sure??')) {
+      const httpOptions = {
+        headers:new HttpHeaders({ 'Content-Type': 'application/json' }),
+      };
+
+      this.http.delete<string>(this.baseUrl + `people/?personId=${person.personId}`, httpOptions).subscribe(result => {
+        alert("Succsess");
+        //this.refreshList();
+      }, error => console.error(error));
+    }
+  } 
 
   closeClick() {
-    this.ActivateAddEditPersonComp = false;    
+    this.ActivateAddEditPersonComp = false;
   }
 }
 
@@ -44,7 +64,7 @@ export interface Person {
   personId: string;
   firstName: string;
   surname: string;
-  dateOfBirth: Date; //Date
+  dateOfBirth: Date;
   address: string;
   phone: string;
   iban: string;
