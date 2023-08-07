@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Yjdr5DBrmzSWB6K9hv3ov5GC7mwq8uPj+OI3FDyoglXBVd9Rn6AjwPi2SUXo9/ujP+R7cytNlNZTx0MxxiscXw==",
+  "dgSpecHash": "g3qYfWgLuABJzN5eOoITtjV+3rMiBJBYxTXm4perywUmBedrPN0eGQ3fGqJGsBVgbpa9GznDZvKMNTfUGlelgA==",
   "success": true,
   "projectFilePath": "D:\\Projects\\AngularProject\\Logic\\Logic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Cveti\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Cveti\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\Cveti\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
+    "C:\\Users\\Cveti\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\Cveti\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Cveti\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.2\\microsoft.data.sqlclient.5.0.2.nupkg.sha512",

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Data.Data;
+using Logic.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetPeopleQueryHandler).Assembly));
 
 var app = builder.Build();
 

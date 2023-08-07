@@ -1,6 +1,8 @@
 ﻿using Data.Data;
 using Data.Models;
 using Logic.DTO;
+using Logic.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +14,8 @@ namespace AngularProject.Controllers
     public class PeopleController : ControllerBase
     {
         private readonly ApplicationDbContext _db;
+        private IMediator _mediator;
+        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
         public PeopleController(ApplicationDbContext db)
         {
@@ -19,9 +23,9 @@ namespace AngularProject.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Person> Get()
+        public async Task<IEnumerable<Person>> Get()
         {
-           return _db.People.ToArray();
+            return await Mediator.Send(new GetPeopleQuery());
         }
 
         [HttpPost]
