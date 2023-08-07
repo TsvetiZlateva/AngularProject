@@ -1,6 +1,6 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component } from '@angular/core';
 import * as moment from 'moment';
+import { ApiServiceService } from '../services/apiservice.service';
 
 @Component({
   selector: 'app-get-people',
@@ -13,16 +13,15 @@ export class PeopleComponent {
   ModalTitle = "";
   ActivateAddEditPersonComp: boolean = false;
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-    http.get<Person[]>(baseUrl + 'people').subscribe(result => {
-      this.people = result;
-    }, error => console.error(error));
+  constructor(private service: ApiServiceService) { }
+
+  ngOnInit(): void {
+    this.refreshPeopleList();
   }
 
   addUser() {
     this.person = {
-      PersonId: "0",
-      //FirstName: ""
+      PersonId: "0"
     }
     this.ModalTitle = "Add New Person";
     this.ActivateAddEditPersonComp = true;
@@ -43,20 +42,25 @@ export class PeopleComponent {
   }
 
   deleteUser(person: any) {
-    if (confirm('Are you sure??')) {
-      const httpOptions = {
-        headers:new HttpHeaders({ 'Content-Type': 'application/json' }),
-      };
-
-      this.http.delete<string>(this.baseUrl + `people/?personId=${person.personId}`, httpOptions).subscribe(result => {
+    if (confirm('Are you sure you want to delete this person?')) {
+      
+      this.service.deletePerson(person.personId).subscribe(result => {
         alert("Succsess");
-        //this.refreshList();
+        this.refreshPeopleList();
       }, error => console.error(error));
     }
   } 
 
+  //TODO: add event listener for closing modal
   closeClick() {
     this.ActivateAddEditPersonComp = false;
+    this.refreshPeopleList();
+  }
+
+  refreshPeopleList() {
+    this.service.getPeopleList().subscribe(result => {
+      this.people = result;
+    }, error => console.error(error));
   }
 }
 

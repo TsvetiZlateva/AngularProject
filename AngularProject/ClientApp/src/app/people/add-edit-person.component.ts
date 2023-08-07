@@ -1,6 +1,5 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, Input, Inject, ViewChild } from '@angular/core';
-import { Person } from './get-people.component'
+import { ApiServiceService } from '../services/apiservice.service';
 
 @Component({
   selector: 'app-add-edit-person',
@@ -9,9 +8,7 @@ import { Person } from './get-people.component'
 
 export class AddEditPersonComponent implements OnInit {
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-
-  }
+  constructor(private service: ApiServiceService) { }
 
   @Input() person: any;
   PersonId = "";
@@ -43,18 +40,16 @@ export class AddEditPersonComponent implements OnInit {
       Phone: this.Phone,
       IBAN: this.IBAN,
     };
-
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    this.http.post<Person>(this.baseUrl + 'people', person, httpOptions).subscribe(result => {     
+        
+    this.service.addPerson(person).subscribe(result => {     
       this.SuccessMessage = "Success";
-      //this.refreshList();
-
+      
       this.FirstName = "";
       this.Surname = "";
       this.DateOfBirth = null;
       this.Address = "";
       this.Phone = "";
-      this.IBAN = "";      
+      this.IBAN = "";
     }, error => this.ErrorMessage = "Error"); //console.error(error));
   }
 
@@ -68,11 +63,9 @@ export class AddEditPersonComponent implements OnInit {
       Phone: this.Phone,
       IBAN: this.IBAN,
     };
-
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    this.http.put<Person>(this.baseUrl + 'people', person, httpOptions).subscribe(result => {
-      this.SuccessMessage = "Success";
-      //this.refreshList();
+   
+    this.service.updatePerson(person).subscribe(result => {
+      this.SuccessMessage = "Success";      
     }, error => this.ErrorMessage = "Error"); //console.error(error));
   }
 }

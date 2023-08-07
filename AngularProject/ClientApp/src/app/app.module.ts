@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { PeopleComponent } from './people/get-people.component';
 import { AddEditPersonComponent } from './people/add-edit-person.component';
+import { ApiServiceService } from './services/apiservice.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { AddEditPersonComponent } from './people/add-edit-person.component';
       { path: 'get-people', component: PeopleComponent },
     ])
   ],
-  providers: [],
+  providers: [ApiServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
