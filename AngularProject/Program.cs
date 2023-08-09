@@ -1,6 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Data.Data;
 using Logic.Queries;
+using Logic.Mappings;
+using FluentValidation;
+using Logic.Commands;
+using Logic.Behaviours;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +14,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddAutoMapper(typeof(PersonProfile));
+builder.Services.AddValidatorsFromAssembly(typeof(CreatePersonCommandValidator).Assembly);
 builder.Services.AddControllersWithViews();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetPeopleQueryHandler).Assembly));
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 var app = builder.Build();
 

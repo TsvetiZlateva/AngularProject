@@ -1,11 +1,9 @@
 ﻿using Data.Data;
 using Data.Models;
-using Logic.DTO;
+using Logic.Commands;
 using Logic.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AngularProject.Controllers
 {
@@ -27,14 +25,19 @@ namespace AngularProject.Controllers
         {
             return await Mediator.Send(new GetPeopleQuery());
         }
-
+        
         [HttpPost]
-        public IActionResult Post(Person person)
+        public async Task<IActionResult> Post(Person person)
         {
-            _db.People.Add(person);
-            _db.SaveChanges();
-
-            return Ok();
+            return Ok(await Mediator.Send(new CreatePersonCommand
+            {
+                FirstName = person.FirstName,
+                Surname = person.Surname,
+                DateOfBirth = person.DateOfBirth,
+                Address = person.Address,
+                Phone = person.Phone,
+                IBAN = person.IBAN,
+            }));
         }
 
         [HttpPut]
@@ -53,7 +56,7 @@ namespace AngularProject.Controllers
 
                 _db.SaveChanges();
             }
-           
+
             return Ok();
         }
 
@@ -66,7 +69,7 @@ namespace AngularProject.Controllers
             {
                 _db.Remove(personForDeletion);
                 _db.SaveChanges();
-            }                
+            }
 
             return Ok();
         }
