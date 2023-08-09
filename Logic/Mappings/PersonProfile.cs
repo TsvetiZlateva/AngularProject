@@ -15,6 +15,7 @@ namespace Logic.Mappings
         public PersonProfile()
         {
             CreateMap<CreatePersonCommand, Person>().ReverseMap();
+            CreateMap<UpdatePersonCommand, Person>().ReverseMap();
         }
     }
 }
