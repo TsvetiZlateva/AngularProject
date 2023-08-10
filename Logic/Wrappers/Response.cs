@@ -12,8 +12,6 @@ namespace Logic.Wrappers
         {
         }
 
-
-
         /// <summary>
         /// Constructor for Response object.
         /// </summary>
@@ -26,8 +24,6 @@ namespace Logic.Wrappers
             Message = message;
             Data = data;
         }
-
-
 
         /// <summary>
         /// Constructor for Response class.
