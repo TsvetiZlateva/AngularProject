@@ -3,10 +3,8 @@ import { test, expect } from '@playwright/test';
 test('easy-peasy', async ({ page }) => {
   await page.goto('/get-people');
 
-  // Click the get started link.
   let tableLabel = await page.getByTestId('x').textContent();
 
-  // Expects the URL to contain intro.
   await expect(tableLabel).toEqual('People contacts');
 });
 
